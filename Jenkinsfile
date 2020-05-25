@@ -8,6 +8,7 @@ pipeline {
   stages {
     stage("Build") {
       steps {
+        sh "echo 'teste'"
         sh "chmod +x build/alpine.sh"
         sh "./build/alpine.sh"
         sh "bundle install"
