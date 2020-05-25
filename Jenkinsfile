@@ -1,27 +1,14 @@
 pipeline {
-  agent {
-    docker {
-        image "ruby:alpine"
-        args "--network=skynet -u root --privileged"
-    }
-  }
+  agent any
   stages {
     stage("Build") {
       steps {
-        sh "echo 'teste'"
-        sh "chmod +x build/alpine.sh"
-        sh "./build/alpine.sh"
         sh "bundle install"
       }
     }
     stage("Test") {
       steps {
-        sh "bundle exec cucumber -p ci"
-      }
-      post {
-        always {
-          cucumber fileIncludePattern: '**/*.json', jsonReportDirectory: 'log', sortingMethod: 'ALPHABETICAL'
-        }
+        sh "echo 'teste'"
       }
     }
   }
