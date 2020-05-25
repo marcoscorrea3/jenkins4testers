@@ -10,9 +10,9 @@ pipeline {
         sh "bundle install"
       }
     }
-    stage("Test") {
+    stage("Tests") {
       steps {
-        sh "echo 'teste'"
+        sh "bundle exec cucumber -p ci"
       }
     }
   }
